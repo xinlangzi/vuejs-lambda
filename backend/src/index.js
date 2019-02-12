@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const routes = require('./routes');
 
 // define the Express app
 const app = express();
@@ -18,6 +19,8 @@ app.use(cors());
 
 // log HTTP requests
 app.use(morgan('combined'));
+
+app.use('/micro-posts', routes);
 
 // start the server
 app.listen(8081, () => {
